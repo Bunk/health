@@ -4,28 +4,25 @@
   "version": "0.0.0",
   "author": "JD Courtoy <jd.courtoy@gmail.com>",
   "license": "MIT",
-
   "keywords": "hubot, hubot-scripts, hubot-health, health, check, status",
-
   "repository": {
     "type": "git",
     "url": "git://github.com/hubot-scripts/hubot-health.git"
   },
-
   "bugs": {
     "url": "https://github.com/hubot-scripts/hubot-health/issues"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "peerDependencies": {
-    "hubot": "2.x"
+    "hubot": "*"
   },
-
   "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": ">= 6",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.9.0",
     "chai": "^2.1.1",
-    "coffee-script": "1.6.3",
+    "coffee-script": "*",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-watch": "~0.6.1",
@@ -37,10 +34,10 @@
     "sinon": "^1.13.0",
     "sinon-chai": "^2.7.0"
   },
-
-  "main": "index.coffee",
-
+  "main": "lib/index.js",
   "scripts": {
-    "test": "grunt test"
+    "compile": "babel -d lib/ src/ --ignore=\"*spec.js\"",
+    "test": "grunt test",
+    "prepublish": "npm run compile"
   }
 }

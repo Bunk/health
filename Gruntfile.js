@@ -7,9 +7,9 @@ module.exports = function (grunt) {
       test: {
         options: {
           reporter: 'spec',
-          require: 'coffee-script'
+          require: [ 'babel-core/register' ]
         },
-        src: ['test/**/*.coffee']
+        src: [ '**/*.spec.js' ]
       }
     },
     release: {
@@ -19,7 +19,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      files: ['Gruntfile.js', 'src/**/*.coffee', 'test/**/*.coffee'],
+      files: ['Gruntfile.js', 'src/**/*.*'],
       tasks: ['test']
     }
   });
