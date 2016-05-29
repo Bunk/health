@@ -14,12 +14,37 @@
 // Author:
 //   JD Courtoy <jd.courtoy@gmail.com>
 
+import aupair from "aupair";
+
+function transformHealthy( healthy, message ) {
+  return healthy ? `[✓] ${message}`: `[✗] ${message}`
+}
+
+function transform( status ) {
+  let message = `${transformHealthy( status.healthy, "Overall" )}`;
+  for ( let dependency of status.details ) {
+    message += `\n${transformHealthy( dependency.healthy, dependency.name )}`
+    if ( !dependency.healthy ) {
+      message += `: ${dependency.error}`
+    }
+  }
+  return message;
+}
+
 export default ( robot ) => {
-  robot.respond( /hello/, msg => {
-    msg.reply( "hello!" );
+  const started = Date.now();
+
+  robot.respond( /health/, msg => {
+    aupair.check()
+      .then( status => msg.reply( transform( status ) ) )
+      .catch( err => console.log( err.stack ) );
   } );
 
-  robot.hear( /orly/, msg => {
-    msg.send( "yarly" );
+  robot.router.get( "/hubot/status", ( req, res ) => {
+    aupair.check()
+      .then( payload => {
+        res.set( "Content-Type", "application/json" );
+        res.send( JSON.stringify( payload ) );
+      } );
   } );
 }

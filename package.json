@@ -1,18 +1,22 @@
 {
-  "name": "hubot-health",
+  "name": "hubot-aupair",
   "description": "A hubot script that checks and reports the health of any dependent services",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "JD Courtoy <jd.courtoy@gmail.com>",
   "license": "MIT",
-  "keywords": "hubot, hubot-scripts, hubot-health, health, check, status",
+  "keywords": "hubot, hubot-scripts, hubot-health, health, check, status, aupair, au-pair",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-health.git"
+    "url": "git://github.com/Bunk/hubot-aupair.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-health/issues"
+    "url": "https://github.com/Bunk/hubot-aupair/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "aupair": "^0.1.0",
+    "moment-precise-range": "^0.1.1",
+    "request-promise": "^3.0.0"
+  },
   "peerDependencies": {
     "hubot": "*"
   },
