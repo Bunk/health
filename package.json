@@ -40,8 +40,8 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "compile": "babel -d lib/ src/ --ignore=\"*spec.js\"",
+    "build": "babel -d lib/ src/ --ignore=\"*spec.js\"",
     "test": "grunt test",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run build"
   }
 }
