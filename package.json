@@ -1,7 +1,7 @@
 {
   "name": "hubot-aupair",
   "description": "A hubot script that checks and reports the health of any dependent services",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "JD Courtoy <jd.courtoy@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, hubot-health, health, check, status, aupair, au-pair",
