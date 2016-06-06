@@ -12,8 +12,7 @@
 //
 // Author:
 //   JD Courtoy <jd.courtoy@gmail.com>
-
-import aupair from "aupair";
+const aupair = require( "aupair" );
 
 function transformHealthy( healthy, message ) {
   return healthy ? `[✓] ${message}` : `[✗] ${message}`;
