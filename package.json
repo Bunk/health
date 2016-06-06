@@ -13,7 +13,7 @@
     "url": "https://github.com/Bunk/hubot-aupair/issues"
   },
   "dependencies": {
-    "aupair": "^0.1.0",
+    "aupair": "^0.1.2",
     "moment-precise-range": "^0.1.1",
     "request-promise": "^3.0.0"
   },

@@ -5,11 +5,10 @@
 //   LIST_OF_ENV_VARS_TO_SET
 //
 // Commands:
-//   hubot hello - <what the respond trigger does>
-//   orly - <what the hear trigger does>
+//   hubot health - Responds with the current health of the monitored systems
 //
 // Notes:
-//   <optional notes required for the script>
+//   Also supplied an HTTP endpoint at '/hubot/health' that responds with a health check
 //
 // Author:
 //   JD Courtoy <jd.courtoy@gmail.com>
@@ -40,7 +39,7 @@ export default ( robot ) => {
       .catch( err => console.log( err.stack ) );
   } );
 
-  robot.router.get( "/hubot/status", ( req, res ) => {
+  robot.router.get( "/hubot/health", ( req, res ) => {
     aupair.check()
       .then( payload => {
         res.set( "Content-Type", "application/json" );
