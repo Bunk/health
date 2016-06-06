@@ -7,24 +7,24 @@ function shouldLoad( scripts, script ) {
 
 function parseHelp( scriptsPath, script ) {
   const HUBOT_DOCUMENTATION_SECTIONS = [
-    'description',
-    'dependencies',
-    'configuration',
-    'commands',
-    'notes',
-    'author',
-    'authors',
-    'examples',
-    'tags',
-    'urls'
+    "description",
+    "dependencies",
+    "configuration",
+    "commands",
+    "notes",
+    "author",
+    "authors",
+    "examples",
+    "tags",
+    "urls"
   ];
-  const body = fs.readFileSync( path.join( scriptsPath, script ), 'utf-8' );
+  const body = fs.readFileSync( path.join( scriptsPath, script ), "utf-8" );
 
   let commands = [];
   let currentSection;
 
   body.split( "\n" ).forEach( line => {
-    if ( line.substr( 0, 2 ) !== "//" ) {
+    if ( line.substr( 0, 2 ) !== "//" ) { // eslint-disable-line no-magic-numbers
       return;
     }
 
@@ -45,7 +45,7 @@ function parseHelp( scriptsPath, script ) {
 }
 
 export default ( robot, scripts ) => {
-  const scriptsPath = path.resolve( __dirname + "/scripts" );
+  const scriptsPath = path.resolve( path.join( __dirname, "scripts" ) );
 
   if ( fs.existsSync( scriptsPath ) ) {
     const potentialScripts = fs.readdirSync( scriptsPath ).sort();
@@ -64,4 +64,4 @@ export default ( robot, scripts ) => {
       }
     } );
   }
-}
+};

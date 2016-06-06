@@ -16,23 +16,21 @@
 import aupair from "aupair";
 
 function transformHealthy( healthy, message ) {
-  return healthy ? `[✓] ${message}`: `[✗] ${message}`
+  return healthy ? `[✓] ${message}` : `[✗] ${message}`;
 }
 
 function transform( status ) {
   let message = `${transformHealthy( status.healthy, "Overall" )}`;
   for ( let dependency of status.details ) {
-    message += `\n${transformHealthy( dependency.healthy, dependency.name )}`
+    message += `\n${transformHealthy( dependency.healthy, dependency.name )}`;
     if ( !dependency.healthy ) {
-      message += `: ${dependency.error}`
+      message += `: ${dependency.error}`;
     }
   }
   return message;
 }
 
-export default ( robot ) => {
-  const started = Date.now();
-
+export default robot => {
   robot.respond( /health/, msg => {
     aupair.check()
       .then( status => msg.reply( transform( status ) ) )
@@ -46,4 +44,4 @@ export default ( robot ) => {
         res.send( JSON.stringify( payload ) );
       } );
   } );
-}
+};
